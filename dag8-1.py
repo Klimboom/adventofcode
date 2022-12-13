@@ -29,6 +29,20 @@ def solve(puzzle):
             if h+r==len(lines[0]):
                 res+=1
                 continue
+            #omhoog
+            o=1
+            while v-o>=0 and int(lines[v][h])>int(lines[v-o][h]):
+                o+=1
+            if v-o<0:
+                res+=1
+                continue
+            #omlaag
+            d=1
+            while v+d<(len(lines)) and int(lines[v][h])>int(lines[v+d][h]):
+                d+=1
+            if v+d==len(lines):
+                res+=1
+                continue
             
     res+=(2*len(lines[0])+2*len(lines)-4)
 
@@ -39,5 +53,5 @@ def solve(puzzle):
 
 
 start=pfc()
-print(solve(read_puzzle('dag8-test.txt')))
+print(solve(read_puzzle('dag8.txt')))
 print(pfc()-start)
